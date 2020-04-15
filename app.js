@@ -47,7 +47,10 @@ app.use("/", indexRoutes);
 app.use("/study_rooms", study_roomRoutes);
 app.use("/study_rooms/:id/comments", commentRoutes);
 
-app.listen(3000, "localhost", function () {
+// app.listen(3000, "localhost", function () {
+//     console.log("The study paradise server has started");
+// });
+
+app.listen(process.env.PORT, process.env.IP, function () {
     console.log("The study paradise server has started");
 });
-
