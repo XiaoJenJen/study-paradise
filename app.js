@@ -16,7 +16,7 @@ var commentRoutes    = require("./routes/comments"),
     study_roomRoutes = require("./routes/study_rooms"),
     indexRoutes      = require("./routes/index");
 
-mongoose.connect(process.env.MATLAS, { useUnifiedTopology: true, useCreateIndex: true, useNewUrlParser: true, useFindAndModify: false })
+mongoose.connect("mongodb+srv://study-paradise:6sEKGKn2EezrZX2S@cluster0-7ulwf.mongodb.net/test?retryWrites=true&w=majority\n", { useUnifiedTopology: true, useCreateIndex: true, useNewUrlParser: true, useFindAndModify: false })
     .then(() => {
         console.log('Connected to DB!');
     }).catch(err => {
