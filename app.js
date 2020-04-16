@@ -16,7 +16,17 @@ var commentRoutes    = require("./routes/comments"),
     study_roomRoutes = require("./routes/study_rooms"),
     indexRoutes      = require("./routes/index");
 
-mongoose.connect("mongodb://localhost/study_paradise", { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
+mongoose.connect(process.env.MATLAS, { useUnifiedTopology: true, useCreateIndex: true, useNewUrlParser: true, useFindAndModify: false })
+    .then(() => {
+        console.log('Connected to DB!');
+    }).catch(err => {
+        console.log('ERROR:', err.message);
+});
+
+// development database
+// mongoose.connect("mongodb://localhost/study_paradise", { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -54,3 +64,6 @@ app.use("/study_rooms/:id/comments", commentRoutes);
 app.listen(process.env.PORT, process.env.IP, function () {
     console.log("The study paradise server has started");
 });
+
+// console.log(process.env);
+// console.log(process.env.PORT);
